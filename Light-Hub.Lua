@@ -82,52 +82,6 @@ spawn(function()
         end
     end
 end)
-_G.AntiFlagReset = true
-spawn(function()
-    while wait(2000) do
-        if _G.AntiFlagReset then
-            pcall(function()
-            game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
-        end)
-    end
-   end
-end)
-
-spawn(function()
-    while _G.AntiFlagReset do task.wait()
-        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
-            local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
-            if HealthPercent < 50 then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
-            end
-        end
-        task.wait()
-    end
-end)
-
-local Players = game:GetService("Players")
-
-local function onCharacterAdded(character)
-    local humanoid = character:WaitForChild("Humanoid")
-    humanoid.Died:Connect(function()
-        humanoid.Health = 0
-    end)
-end
-
-Players.PlayerAdded:Connect(function(player)
-    player.CharacterAdded:Connect(onCharacterAdded)
-end)
-
-for _, player in ipairs(Players:GetPlayers()) do
-    if player.Character then
-        onCharacterAdded(player.Character)
-    end
-end
-print("Anti Cheat Bypass Active")
-print("Made By: Nguyen Minh Tien")
-warn("Định Deobf À Bé Yêu?")
-warn("Deobf Làm Gì:3")
-print("Anh Yêu Bé Mà Cứ Dms Xin Là Anh Cho:33")
 repeat wait() until game:IsLoaded()
 if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
 		repeat wait()
@@ -242,7 +196,7 @@ local BtnStroke = Instance.new("UIStroke")
  BtnStroke.Name = "BtnStroke"
              BtnStroke.Parent = Main
              BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-             BtnStroke.Color = Color3.fromRGB(255, 255, 255)            BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
+             BtnStroke.Color = Color3.fromRGB(0, 134, 139)            BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
          BtnStroke.Thickness = 1
          BtnStroke.Transparency = 0
          BtnStroke.Enabled = true
@@ -298,45 +252,6 @@ patch.TextSize = 16.000
 patch.TextColor3 = _G.Primary
 patch.TextXAlignment = Enum.TextXAlignment.Left
 
-local ServerTime = Instance.new("TextLabel")
-ServerTime.Name = "ServerTime"
-ServerTime.Parent = Top
-ServerTime.BackgroundColor3 = Color3.fromRGB(255,255,255)
-ServerTime.BackgroundTransparency = 1.000
-ServerTime.Position = UDim2.new(0.68, 0,0.074, 0)
-ServerTime.Size = UDim2.new(0, 225, 0, 25)
-ServerTime.Font = Enum.Font.GothamSemibold
-ServerTime.Text = ""
-ServerTime.TextSize = 11.000
-ServerTime.TextColor3 = Color3.fromRGB(255,255,255)
-ServerTime.TextXAlignment = Enum.TextXAlignment.Left
-
-function osfunc:Set(textadd)
-ServerTime.Text = textadd
-end
-
-local function UpdateOS()
-local date = os.date("*t")
-local hour = (date.hour) % 24
-local ampm = hour < 12 and "AM" or "PM"
-local timezone = string.format("%02i:%02i:%02i %s", ((hour -1) % 12) + 1, date.min, date.sec, ampm)
-local datetime = string.format("%02d/%02d/%04d", date.day, date.month, date.year)
-local LocalizationService = game:GetService("LocalizationService")
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local name = player.Name
-local result, code = pcall(function()
- return LocalizationService:GetCountryRegionForPlayerAsync(player)
- end)
-osfunc:Set(datetime.." - "..timezone.." [" .. code .. "]")
-end
-spawn(function()
- while true do
- UpdateOS()
- game:GetService("RunService").RenderStepped:Wait()
- end
- end)
- 
 --[[
 local Logo = Instance.new("ImageLabel")
 	Logo.Name = "Logo"
@@ -377,7 +292,7 @@ zzR.CornerRadius = UDim.new(0,5)
 -- BtnStroke.Name = "BtnStroke"
 --             BtnStroke.Parent = Tab 
 --             BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
---             BtnStroke.Color = Color3.fromRGB(255, 255, 255)         
+--             BtnStroke.Color = Color3.fromRGB(0, 134, 139)         
 --             BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
 --         BtnStroke.Thickness = 1
 --         BtnStroke.Transparency = 0
@@ -408,7 +323,7 @@ Page.BackgroundTransparency = 1.000
 BtnStroke.Name = "BtnStroke"
             BtnStroke.Parent = Page
             BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-            BtnStroke.Color = Color3.fromRGB(255, 255, 255)            BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
+            BtnStroke.Color = Color3.fromRGB(0, 134, 139)            BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
         BtnStroke.Thickness = 1
         BtnStroke.Transparency = 0
         BtnStroke.Enabled = true
@@ -504,7 +419,7 @@ TUICorner.Parent = TabButton
 -- BtnStroke.Name = "BtnStroke"
 --             BtnStroke.Parent = TabButton
 --             BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
---             BtnStroke.Color = Color3.fromRGB(255, 255, 255)            BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
+--             BtnStroke.Color = Color3.fromRGB(0, 134, 139)            BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
 --         BtnStroke.Thickness = 1
 --         BtnStroke.Transparency = 0
 --         BtnStroke.Enabled = true
@@ -1871,7 +1786,7 @@ local UICorner = Instance.new("UICorner")
 
 Textbox.Name = "Textbox"
 Textbox.Parent = MainFramePage
-Textbox.BackgroundColor3 = Color3.new(255,130,0)
+Textbox.BackgroundColor3 = Color3.new(0,134,139)
 Textbox.BackgroundTransparency = 0
 Textbox.Size = UDim2.new(0, 379, 0, 31)
 
@@ -2000,7 +1915,7 @@ local UICorner = Instance.new("UICorner")
 
 Textbox.Name = "Textbox"
 Textbox.Parent = MainFramePage
-Textbox.BackgroundColor3 = Color3.new(255,130,0)
+Textbox.BackgroundColor3 = Color3.new(0,134,139)
 Textbox.BackgroundTransparency = 0
 Textbox.Size = UDim2.new(0, 379, 0, 31)
 
@@ -2211,67 +2126,6 @@ Line.Size = UDim2.new(0, 379, 0, 1)
 end
 
 function main:UserMinhTien()
-    local Players = game:GetService("Players")
-    local player = Players.LocalPlayer
-    local userId = player.UserId
-    local thumbType = Enum.ThumbnailType.AvatarBust
-    local thumbSize = Enum.ThumbnailSize.Size420x420 -- Ubah ukuran thumbnail menjadi 420x420
-    local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
-    
-    local UserPlayer = Instance.new("Frame")
-    UserPlayer.Name = "UserPlayer"
-    UserPlayer.Position = UDim2.new(0, 0, 0, 0)
-    UserPlayer.Size = UDim2.new(0, 400, 0, 110)
-    UserPlayer.BackgroundTransparency = 1
-    UserPlayer.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
-    UserPlayer.Parent = MainFramePage
-    
-    local UserImage = Instance.new("ImageLabel")
-    UserImage.Size = UDim2.new(0, 100, 0, 100) -- Ubah ukuran gambar menjadi 200x300
-    UserImage.Position = UDim2.new(0, 10, 0, 10)
-    UserImage.BackgroundTransparency = 1
-    UserImage.Image = content
-    UserImage.Parent = UserPlayer
-
-    local TCNR = Instance.new("UICorner")
-    TCNR.Name = "TCNR"
-    TCNR.Parent = UserImage
-    TCNR.CornerRadius = UDim.new(0,50) 
-    
-       local UserName = Instance.new("TextLabel")
-    UserName.Size = UDim2.new(0, 10, 0, 30)
-    UserName.Position = UDim2.new(0, 120, 0, 30)
-    UserName.TextSize = 30
-    UserName.Font = Enum.Font.SourceSansBold
-    UserName.TextColor3 = _G.Primary
-    UserName.BackgroundTransparency = 1
-    UserName.TextTransparency = .1
-    UserName.Text = game.Players.LocalPlayer.DisplayName
-    UserName.Parent = UserPlayer
-    UserName.TextXAlignment = Enum.TextXAlignment.Left
-    
-    
-    local P = Instance.new("TextLabel")
-    P.Size = UDim2.new(0, 100, 0, 30)
-    P.Position = UDim2.new(0, 122, 0, 55) 
-    P.TextSize = 15
-    P.Font = Enum.Font.Jura
-    P.TextColor3 = Color3.new(1, 1, 1)
-    P.BackgroundTransparency = 1
-    P.Text = "> Username: "..game.Players.LocalPlayer.Name
-    P.Parent = UserPlayer
-    P.TextXAlignment = Enum.TextXAlignment.Left
-    
-    local U = Instance.new("TextLabel")
-    U.Size = UDim2.new(0, 100, 0, 30)
-    U.Position = UDim2.new(0, 122, 0, 72) 
-    U.TextSize = 15
-    U.Font = Enum.Font.Jura
-    U.TextColor3 = Color3.new(1, 1, 1)
-    U.BackgroundTransparency = 1
-    U.Text = "> User Id: "..game.Players.LocalPlayer.UserId
-    U.Parent = UserPlayer
-    U.TextXAlignment = Enum.TextXAlignment.Left
     
     main:AddLine()
 
@@ -4441,9 +4295,9 @@ local S = Library:AddTab("Shop","rbxassetid://10734952479")
 local D = Library:AddTab("Devil Fruit","rbxassetid://10709761889")
 local Misc = Library:AddTab("Miscellaneous","rbxassetid://10709782582")
 --------------------------------------------------------------------------------------------------------
-TienTiny:AddSeperator("x2N HUB")
+TienTiny:AddSeperator("Light Hub")
 TienTiny:UserMinhTien()
-local Creator = TienTiny:AddLabel('Hii '..game.Players.LocalPlayer.Name.." To x2N HUB !! Thanks Using.")
+local Creator = TienTiny:AddLabel('Chào Bạn Đến Với Light hub")
 
 spawn(function()
     while wait() do
@@ -4455,8 +4309,8 @@ spawn(function()
     end
 end)
 
-TienTiny:AddSeperator("🧑‍💻 Developer 🧑‍💻")
-TienTiny:AddLabel("Owner: Nguyen Minh Tien (Tien Tiny)")
+TienTiny:AddSeperator("Developer")
+TienTiny:AddLabel("Owner: Trương Anh Vũ")
 TienTiny:AddSeperator("Social Network")
 TienTiny:AddButton('Discord Sever', function()
 setclipboard(_G.Discord)
@@ -17341,7 +17195,7 @@ spawn(function()
         end
     end)
     end)
-FakeDamage("x2N HUB")
+FakeDamage("Light Hub")
 ----------------------------------------------------------------------------------------------------------------------------------------
 local ScreenGui1 = Instance.new("ScreenGui")
 local ImageButton1 = Instance.new("ImageButton")
