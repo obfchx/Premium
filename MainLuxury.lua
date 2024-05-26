@@ -1,5 +1,4 @@
 _G.Remove = true
-
 spawn(function()
     game:GetService('RunService').Stepped:Connect(function()
         if _G.Remove then
